@@ -143,9 +143,26 @@ main {
   transition: 0.3s ease-in-out;
 }
 
+.container .profile-data .repositories #repos-info {
+  margin-top: 10px;
+}
+
+.container .profile-data .repositories #repos-info #repo-info {
+  background-color: blueviolet;
+  color: #fff;
+  font-size: 12px;
+  margin: 3px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .container .profile-data .repositories ul li a:hover{
   background-color:hotpink;
   color: #fff
+}
+
+.container .profile-data .events-section #event h3 {
+  font-weight: 800;
 }
 
 .container .profile-data.hide{

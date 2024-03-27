@@ -11,7 +11,19 @@ const screen = {
                                     </div>   
                                   </div>`
     let repositoriesItems = ''
-    user.repositories.forEach(repo => repositoriesItems += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`)  
+    user.repositories.forEach(repo => repositoriesItems += `<li>
+                                                              <a href="${repo.html_url}" target="_blank">
+                                                                ${repo.name}
+                                                                <div id="repos-info">
+                                                                  <ul>
+                                                                    <li id="repo-info">🍴 ${repo.forks_count}</li>
+                                                                    <li id="repo-info">⭐ ${repo.stargazers_count}</li>
+                                                                    <li id="repo-info">👀 ${repo.watchers_count}</li>
+                                                                    <li id="repo-info">👨‍💻 ${repo.language}</li>
+                                                                  </ul>
+                                                                </div>
+                                                              </a>
+                                                            </li>`)  
     
     if(user.repositories.length > 0) {
       this.userProfile.innerHTML += `<div class="repositories section">
@@ -22,7 +34,6 @@ const screen = {
     let eventsItems = ''
           
     user.events.forEach(event => {
-        console.log(event)
         if(event.type === 'PushEvent') {
           eventsItems += `<li id="event">
                           <h3>${event.repo.name}</h3>
