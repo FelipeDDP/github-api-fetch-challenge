@@ -19,6 +19,29 @@ const screen = {
                                       <ul>${repositoriesItems}</ul>
                                      </div>`
     }
+    let eventsItems = ''
+          
+    user.events.forEach(event => {
+        console.log(event)
+        if(event.type === 'PushEvent') {
+          eventsItems += `<li id="event">
+                          <h3>${event.repo.name}</h3>
+                          <p>${event.payload.commits[0].message}</p>
+                          </li></br>`
+        } else {
+          eventsItems += `<li id="event">
+                          <h3>${event.repo.name}</h3>
+                          <p>New ${event.payload.ref_type}</p>
+                          </li></br>`
+        }
+      })
+       
+    if(user.events.length > 0) {
+      this.userProfile.innerHTML += `<div class="events-section">
+                                      <h2>Eventos</h2></br>
+                                      <ul>${eventsItems}</ul>
+                                     </div>`
+    }
   },
   renderNotFound() {
     this.userProfile.innerHTML = '<h3>Usuário não encontrado</h3>'
